@@ -1,5 +1,3 @@
-#!/usr/bin/env ruby
-
 require "sqlite3"
 
 unless ARGV.length == 1
