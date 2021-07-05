@@ -6,6 +6,8 @@ unless ARGV.length == 1
   exit
 end
 
+`killall 'System Preferences' > /dev/null 2>&1`
+
 filename = File.expand_path(ARGV[0])
 
 DB_LOC = File.join(ENV["HOME"], "Library/Application Support/Dock/desktoppicture.db")
@@ -15,4 +17,4 @@ DB.execute("SELECT ROWID,value FROM data").each do |(rowid, path)|
   DB.execute("UPDATE data SET value=? WHERE ROWID=?", [filename, rowid])
 end
 
-`killall Dock`
+`killall Dock > /dev/null 2>&1`
